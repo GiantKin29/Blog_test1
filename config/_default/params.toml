@@ -1,6 +1,6 @@
 # -- Congo Theme Parameters --
 
-colorScheme = "congo"
+colorScheme = "finance"
 defaultAppearance = "dark"
 autoSwitchAppearance = true
 
@@ -22,7 +22,7 @@ fingerprintAlgorithm = "sha256"
   showScrollToTop = true
 
 [homepage]
-  layout = "page"
+  layout = "profile"
   showRecent = true
   recentLimit = 6
 

@@ -11,4 +11,6 @@ weight = 1
     logo = ""
     logoDark = ""
   description = "株式・FX・経済・資産形成に関する情報を発信する金融ブログ"
-  author.name = "管理人"
+  [params.author]
+    name = "管理人"
+    headline = "株式・FX・経済・資産形成の情報メディア"

@@ -1,0 +1,207 @@
+/* =============================================
+   Finance Blog - Custom CSS
+   ============================================= */
+
+/* ---------- ヘッダー ---------- */
+header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.dark header {
+  background-color: rgba(13, 22, 40, 0.85) !important;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+/* ロゴ・サイトタイトル */
+header a[href="/blog_test1/"] {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- ホームページ プロフィール ---------- */
+article h1 {
+  background: linear-gradient(135deg, #f5b83b 0%, #f59e0b 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+
+article h2.text-xl {
+  letter-spacing: 0.04em;
+}
+
+/* ---------- 記事カード ---------- */
+.dark article.grid {
+  background-color: rgba(22, 35, 58, 0.6);
+  border: 1px solid rgba(245, 158, 11, 0.1);
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.dark article.grid:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+article.grid {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(217, 119, 6, 0.1);
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+article.grid:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(217, 119, 6, 0.1);
+  border-color: rgba(217, 119, 6, 0.3);
+}
+
+/* ---------- 記事タイトルリンク ---------- */
+.dark article h2 a,
+.dark article h3 a {
+  transition: color 0.15s ease;
+}
+
+/* ---------- メイン記事ページ ---------- */
+.dark .prose {
+  color: rgb(203, 213, 225);
+}
+
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4 {
+  color: rgb(241, 245, 249);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+  padding-bottom: 0.3em;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  border-bottom: 1px solid rgba(217, 119, 6, 0.15);
+  padding-bottom: 0.3em;
+}
+
+/* ---------- テーブル ---------- */
+.dark .prose table {
+  border-collapse: collapse;
+}
+
+.dark .prose thead {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.15));
+  border-bottom: 2px solid rgba(245, 158, 11, 0.4);
+}
+
+.dark .prose th {
+  color: rgb(251, 191, 36);
+  font-weight: 700;
+}
+
+.dark .prose tr:nth-child(even) {
+  background-color: rgba(22, 35, 58, 0.5);
+}
+
+.prose thead {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.12), rgba(245, 158, 11, 0.08));
+  border-bottom: 2px solid rgba(217, 119, 6, 0.3);
+}
+
+.prose th {
+  color: rgb(146, 64, 14);
+  font-weight: 700;
+}
+
+/* ---------- 引用ブロック ---------- */
+.dark .prose blockquote {
+  border-left: 4px solid rgb(245, 158, 11);
+  background-color: rgba(245, 158, 11, 0.06);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.75rem 1rem;
+  color: rgb(148, 163, 184);
+  font-style: normal;
+}
+
+.prose blockquote {
+  border-left: 4px solid rgb(217, 119, 6);
+  background-color: rgba(217, 119, 6, 0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+  padding: 0.75rem 1rem;
+  font-style: normal;
+}
+
+/* ---------- コードブロック ---------- */
+.dark .prose code {
+  background-color: rgba(22, 35, 58, 0.8);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  border-radius: 0.3em;
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+}
+
+/* ---------- タグ・カテゴリ バッジ ---------- */
+.dark a[href*="/tags/"],
+.dark a[href*="/categories/"] {
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 9999px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.dark a[href*="/tags/"]:hover,
+.dark a[href*="/categories/"]:hover {
+  background-color: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+/* ---------- スクロールバー（ダーク） ---------- */
+.dark ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: rgb(13, 22, 40);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.3);
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.5);
+}
+
+/* ---------- フッター ---------- */
+.dark footer {
+  border-top: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+footer {
+  border-top: 1px solid rgba(217, 119, 6, 0.12);
+}
+
+/* ---------- ページネーション ---------- */
+.dark nav[aria-label="pagination"] a {
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 0.5rem;
+  transition: background-color 0.15s ease;
+}
+
+.dark nav[aria-label="pagination"] a:hover {
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+/* ---------- 目次 (TOC) ---------- */
+.dark .toc {
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 0.75rem;
+  background-color: rgba(22, 35, 58, 0.5);
+}
+
+.toc {
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  border-radius: 0.75rem;
+}

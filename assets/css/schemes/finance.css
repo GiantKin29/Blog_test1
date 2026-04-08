@@ -1,0 +1,40 @@
+/* Finance scheme - Deep Navy × Gold */
+:root {
+  --color-neutral: 255, 255, 255;
+  /* Deep Navy for neutrals */
+  --color-neutral-50:  248, 250, 252;
+  --color-neutral-100: 241, 245, 249;
+  --color-neutral-200: 226, 232, 240;
+  --color-neutral-300: 203, 213, 225;
+  --color-neutral-400: 148, 163, 184;
+  --color-neutral-500: 100, 116, 139;
+  --color-neutral-600:  71,  85, 105;
+  --color-neutral-700:  51,  65,  85;
+  --color-neutral-800:  22,  35,  58;
+  --color-neutral-900:  13,  22,  40;
+  --color-neutral-950:   7,  12,  24;
+  /* Amber / Gold for primary */
+  --color-primary-50:  255, 251, 235;
+  --color-primary-100: 254, 243, 199;
+  --color-primary-200: 253, 230, 138;
+  --color-primary-300: 252, 211,  77;
+  --color-primary-400: 251, 191,  36;
+  --color-primary-500: 245, 158,  11;
+  --color-primary-600: 217, 119,   6;
+  --color-primary-700: 180,  83,   9;
+  --color-primary-800: 146,  64,  14;
+  --color-primary-900: 120,  53,  15;
+  --color-primary-950:  69,  26,   3;
+  /* Teal / Emerald for secondary */
+  --color-secondary-50:  240, 253, 250;
+  --color-secondary-100: 204, 251, 241;
+  --color-secondary-200: 153, 246, 228;
+  --color-secondary-300:  94, 234, 212;
+  --color-secondary-400:  45, 212, 191;
+  --color-secondary-500:  20, 184, 166;
+  --color-secondary-600:  13, 148, 136;
+  --color-secondary-700:  15, 118, 110;
+  --color-secondary-800:  17,  94,  89;
+  --color-secondary-900:  19,  78,  74;
+  --color-secondary-950:   4,  47,  46;
+}
