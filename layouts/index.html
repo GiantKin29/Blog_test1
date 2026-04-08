@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+<!-- ヒーローバナー -->
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <p class="hero-label">金融情報メディア</p>
+    <h1 class="hero-title">お金の知識で、<br>人生を豊かに。</h1>
+    <p class="hero-desc">株式投資・FX・経済・資産形成について<br>初心者にもわかりやすく発信しています</p>
+    <a href="{{ "/posts/" | relURL }}" class="hero-btn">記事をすべて見る →</a>
+  </div>
+</section>
+
+<!-- カテゴリナビ -->
+<div class="cat-nav-bar">
+  <a href="{{ "/categories/株式投資/" | relURL }}" class="cat-nav-item cat-stocks">
+    <span class="cat-nav-icon">📈</span>
+    <span>株式投資</span>
+  </a>
+  <a href="{{ "/categories/fx/" | relURL }}" class="cat-nav-item cat-fx">
+    <span class="cat-nav-icon">💱</span>
+    <span>FX・為替</span>
+  </a>
+  <a href="{{ "/categories/経済ニュース/" | relURL }}" class="cat-nav-item cat-news">
+    <span class="cat-nav-icon">📰</span>
+    <span>経済ニュース</span>
+  </a>
+  <a href="{{ "/categories/資産形成/" | relURL }}" class="cat-nav-item cat-asset">
+    <span class="cat-nav-icon">🏦</span>
+    <span>資産形成</span>
+  </a>
+</div>
+
+<!-- メインレイアウト -->
+<div class="blog-layout-wrapper">
+  <div class="blog-main-content">
+
+    <h2 class="section-heading">
+      <span class="section-heading-bar"></span>新着記事
+    </h2>
+
+    <div class="card-grid">
+      {{ range (where .Site.RegularPages "Type" "posts") }}
+        {{ partial "article-card.html" . }}
+      {{ end }}
+    </div>
+
+  </div>
+  {{ partial "sidebar.html" . }}
+</div>
+
+{{ end }}
