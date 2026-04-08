@@ -1,7 +1,7 @@
 # -- Congo Theme Parameters --
 
 colorScheme = "finance"
-defaultAppearance = "dark"
+defaultAppearance = "light"
 autoSwitchAppearance = true
 
 enableSearch = true

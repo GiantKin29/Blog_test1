@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="blog-layout-wrapper">
+  <article class="blog-main-content">
+    <header class="blog-article-header">
+      {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+      <h1 class="blog-article-title">
+        {{ .Title | emojify }}
+      </h1>
+      {{ if or
+        (.Params.showDate | default (.Site.Params.article.showDate | default true))
+        (.Params.showReadingTime | default (.Site.Params.article.showReadingTime | default true))
+        (.Params.showWordCount | default (.Site.Params.article.showWordCount | default false))
+      }}
+        <div class="blog-article-meta">
+          {{ partial "article-meta.html" (dict "context" . "scope" "single") }}
+        </div>
+      {{ end }}
+    </header>
+
+    {{ if .Params.showTableOfContents | default (.Site.Params.article.showTableOfContents | default false) }}
+      {{ if in .TableOfContents "<ul" }}
+      <div class="blog-toc-wrap">
+        <div class="blog-toc-title">目次</div>
+        {{ partial "toc.html" . }}
+      </div>
+      {{ end }}
+    {{ end }}
+
+    <section class="prose dark:prose-invert blog-prose-section">
+      {{ .Content | emojify }}
+    </section>
+
+    <footer class="blog-article-footer print:hidden">
+      {{ partial "sharing-links.html" . }}
+      {{ partial "article-pagination.html" . }}
+    </footer>
+  </article>
+
+  {{ partial "sidebar.html" . }}
+</div>
+{{ end }}

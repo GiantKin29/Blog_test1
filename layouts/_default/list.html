@@ -1,0 +1,40 @@
+{{ define "main" }}
+<div class="blog-layout-wrapper">
+  <div class="blog-main-content">
+    <header class="blog-list-header">
+      {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
+        {{ partial "breadcrumbs.html" . }}
+      {{ end }}
+      <h1 class="blog-list-title">{{ .Title }}</h1>
+    </header>
+
+    {{ if .Data.Pages }}
+      <section class="blog-article-list">
+        {{ if $.Params.groupByYear | default ($.Site.Params.list.groupByYear | default true) }}
+          {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
+            <div class="blog-year-group">
+              <h2 class="blog-year-heading">{{ .Key }}年</h2>
+            </div>
+            {{ range .Pages }}
+              {{ partial "article-link.html" . }}
+            {{ end }}
+          {{ end }}
+        {{ else }}
+          {{ range (.Paginate .Pages).Pages }}
+            {{ partial "article-link.html" . }}
+          {{ end }}
+        {{ end }}
+      </section>
+      {{ partial "pagination.html" . }}
+    {{ else }}
+      <section class="prose dark:prose-invert">
+        <p class="blog-no-articles">
+          <em>{{ i18n "list.no_articles" | emojify }}</em>
+        </p>
+      </section>
+    {{ end }}
+  </div>
+
+  {{ partial "sidebar.html" . }}
+</div>
+{{ end }}

@@ -1,0 +1,59 @@
+<aside class="blog-sidebar">
+
+  <!-- About -->
+  <div class="sidebar-widget">
+    <h3 class="sidebar-widget-title">このブログについて</h3>
+    <p class="sidebar-about-text">
+      株式・FX・経済・資産形成に関する情報を発信する金融情報メディアです。初心者から上級者まで、資産を守り増やすヒントをお届けします。
+    </p>
+  </div>
+
+  <!-- Categories -->
+  {{ $cats := .Site.Taxonomies.categories }}
+  {{ if $cats }}
+  <div class="sidebar-widget">
+    <h3 class="sidebar-widget-title">カテゴリ</h3>
+    <ul class="sidebar-cat-list">
+      {{ range $cats.ByCount }}
+      <li>
+        <a href="{{ .Page.Permalink }}" class="sidebar-cat-link">
+          <span class="sidebar-cat-name">{{ .Page.Title }}</span>
+          <span class="sidebar-cat-count">{{ .Count }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+
+  <!-- Recent Posts -->
+  <div class="sidebar-widget">
+    <h3 class="sidebar-widget-title">最新記事</h3>
+    {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
+    <div class="sidebar-recent-post">
+      <a href="{{ .Permalink }}" class="sidebar-recent-link">{{ .Title }}</a>
+      <time class="sidebar-recent-date">{{ .Date.Format "2006.01.02" }}</time>
+    </div>
+    {{ end }}
+  </div>
+
+  <!-- Tags -->
+  {{ $tags := .Site.Taxonomies.tags }}
+  {{ if $tags }}
+  <div class="sidebar-widget">
+    <h3 class="sidebar-widget-title">タグ</h3>
+    <div class="sidebar-tags">
+      {{ range $tags.ByCount }}
+      <a href="{{ .Page.Permalink }}" class="sidebar-tag">{{ .Page.Title }}</a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  <!-- Banner -->
+  <div class="sidebar-widget sidebar-banner">
+    <div class="sidebar-banner-icon">📊</div>
+    <p class="sidebar-banner-text">投資にはリスクが伴います。最終的な判断はご自身でお願いします。</p>
+  </div>
+
+</aside>
