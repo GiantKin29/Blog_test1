@@ -1,20 +1,19 @@
 {{ define "main" }}
 <div class="blog-layout-wrapper">
   <div class="blog-main-content">
-    <header class="blog-list-header">
+
+    <header class="jp-list-header">
       {{ if .Params.showBreadcrumbs | default (.Site.Params.list.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
       {{ end }}
-      <h1 class="blog-list-title">{{ .Title }}</h1>
+      <h1 class="jp-list-title">{{ .Title }}</h1>
     </header>
 
     {{ if .Data.Pages }}
-      <section class="blog-article-list">
+      <section class="jp-list-section">
         {{ if $.Params.groupByYear | default ($.Site.Params.list.groupByYear | default true) }}
           {{ range (.Paginate (.Pages.GroupByDate "2006")).PageGroups }}
-            <div class="blog-year-group">
-              <h2 class="blog-year-heading">{{ .Key }}年</h2>
-            </div>
+            <div class="jp-year-label">{{ .Key }}年</div>
             {{ range .Pages }}
               {{ partial "article-link.html" . }}
             {{ end }}
@@ -27,14 +26,10 @@
       </section>
       {{ partial "pagination.html" . }}
     {{ else }}
-      <section class="prose dark:prose-invert">
-        <p class="blog-no-articles">
-          <em>{{ i18n "list.no_articles" | emojify }}</em>
-        </p>
-      </section>
+      <p class="jp-no-articles"><em>{{ i18n "list.no_articles" | emojify }}</em></p>
     {{ end }}
-  </div>
 
+  </div>
   {{ partial "sidebar.html" . }}
 </div>
 {{ end }}

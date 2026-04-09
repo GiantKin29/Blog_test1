@@ -1,54 +1,43 @@
-{{- $images := .Resources.ByType "image" -}}
-{{- $thumb := $images.GetMatch (.Params.thumbnail | default "*thumb*") -}}
+{{- $images  := .Resources.ByType "image" -}}
+{{- $thumb   := $images.GetMatch (.Params.thumbnail | default "*thumb*") -}}
 {{- $feature := $images.GetMatch (.Params.feature | default "*feature*") | default $thumb -}}
-{{- $cat := "" -}}
-{{- with .Params.categories -}}{{- $cat = index . 0 -}}{{- end -}}
-{{- $catSlug := $cat | urlize -}}
+{{- $cat     := "" -}}
+{{- with .Params.categories }}{{- $cat = index . 0 -}}{{- end -}}
+{{- $slug    := $cat | urlize -}}
 
-<article class="article-card">
-  <a href="{{ .Permalink }}" class="card-link">
+<article class="jp-card">
+  <a href="{{ .Permalink }}" class="jp-card-link">
 
-    <!-- サムネイル -->
-    <div class="card-thumb-wrap">
+    <div class="jp-card-thumb">
       {{ if $feature }}
-        {{ $img := $feature.Fill "400x250 smart" }}
-        <img
-          src="{{ $img.Permalink }}"
-          alt="{{ .Title }}"
-          class="card-thumb-img"
-          {{ if $.Site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}
-        >
+        {{ $img := $feature.Fill "400x225 smart" }}
+        <img src="{{ $img.Permalink }}" alt="{{ .Title }}"
+          class="jp-card-img"
+          {{ if $.Site.Params.enableImageLazyLoading | default true }}loading="lazy"{{ end }}>
       {{ else }}
-        <div class="card-thumb-placeholder cat-ph-{{ $catSlug }}">
-          <div class="card-ph-inner">
-            {{ if eq $catSlug "株式投資" }}📈
-            {{ else if eq $catSlug "fx" }}💱
-            {{ else if eq $catSlug "経済ニュース" }}📰
-            {{ else if eq $catSlug "資産形成" }}🏦
+        <div class="jp-card-placeholder jp-ph-{{ $slug }}">
+          <div class="jp-ph-content">
+            {{ if eq $slug "株式投資" }}📈
+            {{ else if eq $slug "fx" }}💱
+            {{ else if eq $slug "経済ニュース" }}📰
+            {{ else if eq $slug "資産形成" }}🏦
+            {{ else if eq $slug "お知らせ" }}📢
             {{ else }}📝
             {{ end }}
-            <span>{{ .Title | truncate 18 "…" }}</span>
           </div>
         </div>
       {{ end }}
-
       {{ if $cat }}
-        <span class="card-cat-badge cat-badge-{{ $catSlug }}">{{ $cat }}</span>
+        <span class="jp-card-badge jp-badge-{{ $slug }}">{{ $cat }}</span>
       {{ end }}
     </div>
 
-    <!-- カード本文 -->
-    <div class="card-body">
-      <h3 class="card-title">{{ .Title | emojify }}</h3>
-      <div class="card-meta">
-        <time class="card-date">{{ .Date.Format "2006.01.02" }}</time>
-        {{ if .ReadingTime }}
-          <span class="card-read">{{ .ReadingTime }}分</span>
-        {{ end }}
+    <div class="jp-card-body">
+      <h3 class="jp-card-title">{{ .Title | emojify }}</h3>
+      <div class="jp-card-meta">
+        <time>{{ .Date.Format "2006.01.02" }}</time>
+        {{ if .ReadingTime }}<span class="jp-card-read">{{ .ReadingTime }}分で読める</span>{{ end }}
       </div>
-      {{ if .Site.Params.list.showSummary | default false }}
-        <p class="card-summary">{{ .Summary | plainify | truncate 60 "…" }}</p>
-      {{ end }}
     </div>
 
   </a>

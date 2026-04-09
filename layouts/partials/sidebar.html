@@ -1,34 +1,31 @@
-<aside class="blog-sidebar">
+<aside class="jp-sidebar">
 
   <!-- プロフィール -->
-  <div class="sidebar-widget sidebar-profile">
-    <div class="profile-icon">💰</div>
-    <div class="profile-name">{{ .Site.Language.Params.author.name | default "管理人" }}</div>
-    <div class="profile-headline">{{ .Site.Language.Params.author.headline | default "" }}</div>
-    <p class="profile-bio">株式・FX・経済・資産形成に関する情報を発信しています。資産を守り増やすヒントを、わかりやすくお伝えします。</p>
+  <div class="jp-widget jp-widget-profile">
+    <div class="jp-profile-icon">💰</div>
+    <p class="jp-profile-name">{{ .Site.Language.Params.author.name | default "管理人" }}</p>
+    <p class="jp-profile-tagline">{{ .Site.Language.Params.author.headline | default "金融情報メディア" }}</p>
+    <p class="jp-profile-bio">株式・FX・経済・資産形成に関する情報を発信中。正確でわかりやすい情報を心がけています。</p>
   </div>
 
   <!-- カテゴリ -->
   {{ $cats := .Site.Taxonomies.categories }}
   {{ if $cats }}
-  <div class="sidebar-widget">
-    <h3 class="sidebar-widget-title">
-      <span class="swt-bar"></span>カテゴリ
-    </h3>
-    <ul class="sidebar-cat-list">
+  <div class="jp-widget">
+    <h3 class="jp-widget-title"><span class="jp-wt-bar"></span>カテゴリ</h3>
+    <ul class="jp-cat-list">
       {{ range $cats.ByCount }}
       <li>
-        <a href="{{ .Page.Permalink }}" class="sidebar-cat-link cat-link-{{ .Page.Title | urlize }}">
-          <span class="scat-icon">
+        <a href="{{ .Page.Permalink }}" class="jp-cat-link jp-cl-{{ .Page.Title | urlize }}">
+          <span class="jp-cl-icon">
             {{ if eq (.Page.Title | urlize) "株式投資" }}📈
             {{ else if eq (.Page.Title | urlize) "fx" }}💱
             {{ else if eq (.Page.Title | urlize) "経済ニュース" }}📰
             {{ else if eq (.Page.Title | urlize) "資産形成" }}🏦
-            {{ else }}📁
-            {{ end }}
+            {{ else }}📁{{ end }}
           </span>
-          <span class="scat-name">{{ .Page.Title }}</span>
-          <span class="scat-count">{{ .Count }}</span>
+          <span class="jp-cl-name">{{ .Page.Title }}</span>
+          <span class="jp-cl-count">{{ .Count }}</span>
         </a>
       </li>
       {{ end }}
@@ -37,14 +34,12 @@
   {{ end }}
 
   <!-- 最新記事 -->
-  <div class="sidebar-widget">
-    <h3 class="sidebar-widget-title">
-      <span class="swt-bar"></span>最新記事
-    </h3>
+  <div class="jp-widget">
+    <h3 class="jp-widget-title"><span class="jp-wt-bar"></span>最新記事</h3>
     {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
-    <div class="sidebar-recent-item">
-      <a href="{{ .Permalink }}" class="sidebar-recent-link">{{ .Title }}</a>
-      <time class="sidebar-recent-date">{{ .Date.Format "2006.01.02" }}</time>
+    <div class="jp-recent-item">
+      <a href="{{ .Permalink }}" class="jp-recent-link">{{ .Title }}</a>
+      <time class="jp-recent-date">{{ .Date.Format "2006.01.02" }}</time>
     </div>
     {{ end }}
   </div>
@@ -52,26 +47,20 @@
   <!-- タグ -->
   {{ $tags := .Site.Taxonomies.tags }}
   {{ if $tags }}
-  <div class="sidebar-widget">
-    <h3 class="sidebar-widget-title">
-      <span class="swt-bar"></span>タグ
-    </h3>
-    <div class="sidebar-tags">
+  <div class="jp-widget">
+    <h3 class="jp-widget-title"><span class="jp-wt-bar"></span>タグ</h3>
+    <div class="jp-tags">
       {{ range $tags.ByCount }}
-      <a href="{{ .Page.Permalink }}" class="sidebar-tag">{{ .Page.Title }}</a>
+      <a href="{{ .Page.Permalink }}" class="jp-tag">{{ .Page.Title }}</a>
       {{ end }}
     </div>
   </div>
   {{ end }}
 
   <!-- 免責事項 -->
-  <div class="sidebar-widget sidebar-disclaimer">
-    <h3 class="sidebar-widget-title">
-      <span class="swt-bar"></span>免責事項
-    </h3>
-    <p class="disclaimer-text">
-      当ブログの情報は投資判断の参考を目的としており、投資勧誘を行うものではありません。投資には必ずリスクが伴います。最終的な投資判断はご自身の責任でお願いします。
-    </p>
+  <div class="jp-widget jp-widget-disclaimer">
+    <h3 class="jp-widget-title"><span class="jp-wt-bar"></span>免責事項</h3>
+    <p class="jp-disclaimer">当ブログの情報は投資判断の参考を目的としており、投資勧誘ではありません。投資にはリスクが伴います。最終的な判断はご自身でお願いします。</p>
   </div>
 
 </aside>

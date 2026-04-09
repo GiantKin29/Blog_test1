@@ -1,43 +1,43 @@
 {{ define "main" }}
 <div class="blog-layout-wrapper">
-  <article class="blog-main-content">
-    <header class="blog-article-header">
+  <article class="blog-main-content jp-article">
+
+    <header class="jp-article-header">
       {{ if .Params.showBreadcrumbs | default (.Site.Params.article.showBreadcrumbs | default false) }}
         {{ partial "breadcrumbs.html" . }}
       {{ end }}
-      <h1 class="blog-article-title">
-        {{ .Title | emojify }}
-      </h1>
-      {{ if or
-        (.Params.showDate | default (.Site.Params.article.showDate | default true))
-        (.Params.showReadingTime | default (.Site.Params.article.showReadingTime | default true))
-        (.Params.showWordCount | default (.Site.Params.article.showWordCount | default false))
-      }}
-        <div class="blog-article-meta">
-          {{ partial "article-meta.html" (dict "context" . "scope" "single") }}
-        </div>
-      {{ end }}
+      {{- with .Params.categories }}
+      <div class="jp-article-cats">
+        {{ range . }}<a href="{{ "/categories/" | relURL }}{{ . | urlize }}/" class="jp-art-badge jp-badge-{{ . | urlize }}">{{ . }}</a>{{ end }}
+      </div>
+      {{- end }}
+      <h1 class="jp-article-title">{{ .Title | emojify }}</h1>
+      <div class="jp-article-meta">
+        <time>{{ .Date.Format "2006年1月2日" }}</time>
+        {{ if .ReadingTime }}<span>・ 約{{ .ReadingTime }}分</span>{{ end }}
+        {{ if .WordCount }}<span>・ {{ .WordCount }}文字</span>{{ end }}
+      </div>
     </header>
 
     {{ if .Params.showTableOfContents | default (.Site.Params.article.showTableOfContents | default false) }}
       {{ if in .TableOfContents "<ul" }}
-      <div class="blog-toc-wrap">
-        <div class="blog-toc-title">目次</div>
+      <div class="jp-toc">
+        <div class="jp-toc-title">📋 目次</div>
         {{ partial "toc.html" . }}
       </div>
       {{ end }}
     {{ end }}
 
-    <section class="prose dark:prose-invert blog-prose-section">
+    <div class="prose jp-prose">
       {{ .Content | emojify }}
-    </section>
+    </div>
 
-    <footer class="blog-article-footer print:hidden">
+    <footer class="jp-article-footer">
       {{ partial "sharing-links.html" . }}
       {{ partial "article-pagination.html" . }}
     </footer>
-  </article>
 
+  </article>
   {{ partial "sidebar.html" . }}
 </div>
 {{ end }}
